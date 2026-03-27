@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post">
+
+タイトル<br>
+<input name="title" value="{{ task.title }}"><br>
+
+説明<br>
+<textarea name="description">{{ task.description or "" }}</textarea><br>
+
+期限<br>
+<input
+ type="date"
+ name="due_date"
+ value="{{ task.due_date }}"
+><br>
+
+優先度<br>
+<select name="priority">
+<option value="1" {% if task.priority == 1 %}selected{% endif %}>高</option>
+<option value="2" {% if task.priority == 2 %}selected{% endif %}>中</option>
+<option value="3" {% if task.priority == 3 %}selected{% endif %}>低</option>
+</select>
+
+<br>
+
+状態<br>
+<select name="status">
+<option value="0" {% if task.status == 0 %}selected{% endif %}>未完了</option>
+<option value="1" {% if task.status == 1 %}selected{% endif %}>完了</option>
+</select>
+
+<br><br>
+
+<button>更新</button>
+
+</form>
+
+{% endblock %}

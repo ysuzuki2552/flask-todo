@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post">
+
+タイトル<br>
+<input name="title"><br>
+
+説明<br>
+<textarea name="description"></textarea><br>
+
+期限<br>
+<input type="date" name="due_date"><br>
+
+優先度<br>
+<select name="priority">
+<option value="1">高</option>
+<option value="2" selected>中</option>
+<option value="3">低</option>
+</select>
+
+<br><br>
+
+<button>登録</button>
+
+</form>
+
+{% endblock %}

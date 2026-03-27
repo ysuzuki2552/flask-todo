@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{{ url_for('main.create') }}">新規作成</a>
+
+<table>
+<tr>
+<th>タイトル</th>
+<th>期限</th>
+<th>優先度</th>
+<th>状態</th>
+<th></th>
+</tr>
+
+{% for task in tasks %}
+<tr>
+<td>{{ task.title }}</td>
+<td>{{ task.due_date or "" }}</td>
+<td>{{ task.priority }}</td>
+<td>
+{% if task.status == 1 %}
+完了
+{% else %}
+未完了
+{% endif %}
+</td>
+<td>
+<a href="{{ url_for('main.edit', id=task.id) }}">編集</a>
+
+<form method="post" action="{{ url_for('main.delete', id=task.id) }}">
+<button>削除</button>
+</form>
+
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
